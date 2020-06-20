@@ -1,4 +1,4 @@
-package com.example.gamemineseeker;
+package com.example.gamemineseeker.View;
 
 import android.os.Bundle;
 
@@ -10,12 +10,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class MainScreen extends AppCompatActivity {
+import com.example.gamemineseeker.R;
+
+public class gamePlay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_screen);
+        setContentView(R.layout.activity_game_play);
 
 
     }

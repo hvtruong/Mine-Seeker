@@ -1,16 +1,13 @@
-package com.example.gamemineseeker;
+package com.example.gamemineseeker.View;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.gamemineseeker.R;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.os.Handler;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView2);
         rotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         imageView.startAnimation(rotate);
-        Intent welcomeIntent = new Intent(MainActivity.this,MainScreen.class);
+        Intent welcomeIntent = new Intent(MainActivity.this, MainMenu.class);
         textView1 = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
 
