@@ -2,12 +2,24 @@
     <string name="app_name">GameMineSeeker</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_main_screen">MainScreen</string>
+
+    <string name="title_activity_main_screen">Main Screen</string>
+    <string name="title_activity_game_play">Game Play</string>
+    <string name="welcome">WELCOME</string>
+    <string name="skip">SKIP</string>
+    <string name="mine_seeker">MINE SEEKER</string>
+    <string name="to">TO</string>
+    <string name="created_by_viet_h_truong">Created by Viet H. Truong</string>
+    <string name="main_menu">MAIN MENU</string>
+    <string name="play_game">PLAY GAME</string>
+    <string name="options">OPTIONS</string>
+    <string name="help">HELP</string>
+    <string name="scans_used_0"># Scans used: 0</string>
+    <string name="found_0_of_8_mines">Found 0 of 8 mines</string>
+    <string name="ok">OK</string>
+    <string name="scan_used"># Scans used: 0</string>
+    <string name="Found_Mine">\"Found 0 of \"</string>
+    <string name="mines">\" mines.\"</string>
+    <string name="congratulations_n_you_won_the_game">Congratulations! \n You won the game!</string>
 </resources>
