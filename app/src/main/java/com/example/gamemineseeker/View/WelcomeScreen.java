@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeScreen extends AppCompatActivity {
     private static int welcomeScreenTime = 12000;
     private Handler handler = new Handler();
     Animation rotate, fadeIn, fadeOut;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView2);
         rotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         imageView.startAnimation(rotate);
-        Intent welcomeIntent = new Intent(MainActivity.this, MainMenu.class);
+        Intent welcomeIntent = new Intent(WelcomeScreen.this, MainMenu.class);
         textView1 = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
 

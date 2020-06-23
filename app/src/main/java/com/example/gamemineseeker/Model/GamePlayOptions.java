@@ -71,6 +71,7 @@ public class GamePlayOptions {
     }
 
     public void populateHiddenMines(){
+        hiddenMinesManager.clear();
         for(int i = 1; i <= numMine; i++ ){
             int randomRow = generateRandomInt(numRow);
             int randomCol = generateRandomInt(numCol);

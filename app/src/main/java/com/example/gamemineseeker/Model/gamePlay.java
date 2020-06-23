@@ -1,5 +1,7 @@
-package com.example.gamemineseeker.View;
+package com.example.gamemineseeker.Model;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -10,13 +12,18 @@ import android.os.Bundle;
 
 import com.example.gamemineseeker.Model.GamePlayOptions;
 import com.example.gamemineseeker.Model.MineCoordinate;
+import com.example.gamemineseeker.View.CongratulationDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
+import android.os.Vibrator;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -35,15 +42,16 @@ public class gamePlay extends AppCompatActivity {
     private final int NUM_ROW = newGame.getNumRow();
     private final int NUM_COL = newGame.getNumCol();
 
-    Button buttons[][] = new Button[NUM_ROW][NUM_COL];
+    Button[][] buttons = new Button[NUM_ROW][NUM_COL];
 
     int numFoundMine = 0;
     int numOfScanUsed = 0;
     TextView textView6;
     TextView textView7;
+    Animation upToDownScan, leftToRightScan;
 
     ArrayList<MineCoordinate> revealedMineCoordinate = new ArrayList<>();
-    ArrayList<MineCoordinate> scanUpdateCoordinate = new ArrayList<>();
+    ArrayList<MineCoordinate> alreadyScannedCell = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +61,16 @@ public class gamePlay extends AppCompatActivity {
         textView6 = findViewById(R.id.textView6);
         textView7 = findViewById(R.id.textView7);
 
-        textView6.setText("Found 0 of " + newGame.getNumMine() + " mines.");
-        textView7.setText("# Scans used: 0");
+        textView6.setText(getString(R.string.Found_Mine) + newGame.getNumMine() + getString(R.string.mines));
+        textView7.setText(R.string.scan_used);
+
+        newGame.populateHiddenMines();
         populateGamePlay();
     }
 
+    @SuppressLint("SetTextI18n")
     private void populateGamePlay() {
-        TableLayout table = (TableLayout) findViewById(R.id.tableForGamePlay);
+        TableLayout table = findViewById(R.id.tableForGamePlay);
 
         for (int row = 0; row < NUM_ROW; row++) {
             TableRow tableRow = new TableRow(this);
@@ -86,22 +97,40 @@ public class gamePlay extends AppCompatActivity {
                 button.setPadding(0,0,0,0);
 
                 button.setOnClickListener(view -> {
-                    if (newGame.isMineHere(finalRow, finalCol) == true) {
+                    if (newGame.isMineHere(finalRow, finalCol)) {
                         displayMine(finalRow,finalCol);
-                        updateScanDisplay(finalRow, finalCol);
 
                         revealedMineCoordinate.add(new MineCoordinate(finalRow, finalCol));
+                        updateScanDisplay(finalRow, finalCol);
+
+                        Vibrator mineFoundVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        mineFoundVibrator.vibrate(150);
 
                         numFoundMine++;
                         textView6.setText("Found " + numFoundMine + " of " + newGame.getNumMine() + " mines.");
+
+                        if(newGame.getNumMine() == revealedMineCoordinate.size()){
+                            congratulationDialog();
+                        }
                     } else {
-                        scanUpdateCoordinate.add(new MineCoordinate(finalRow, finalCol));
+                        boolean isThisCellTapped = false;
+                        for(int k = 0; k < alreadyScannedCell.size(); k++) {
+                            if(alreadyScannedCell.get(k).getMineRow() == finalRow && alreadyScannedCell.get(k).getMineCol() == finalCol){
+                                isThisCellTapped = true;
+                                break;
+                            }
+                        }
+
+                        alreadyScannedCell.add(new MineCoordinate(finalRow, finalCol));
                         scanDisplay(finalRow, finalCol);
 
-                        scanTriggerByRevealedMine(finalRow, finalCol);
+                        Vibrator scanVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        scanVibrator.vibrate(250);
 
-                        numOfScanUsed++;
-                        textView7.setText("# Scans used: " + numOfScanUsed);
+                        if(!isThisCellTapped) {
+                            numOfScanUsed++;
+                            textView7.setText("# Scans used: " + numOfScanUsed);
+                        }
                     }
                 });
 
@@ -137,17 +166,42 @@ public class gamePlay extends AppCompatActivity {
         newGame.eraseRevealedMine(row, col);
     }
 
+    void animatedScanDisplay(int row, int col){
+        Button subButton = buttons[row][col];
+        int mineCounter = 0;
+
+        for(int j = 0; j < NUM_COL;j++){
+            if(newGame.isMineHere(row, j))
+                mineCounter++;
+
+            leftToRightScan = AnimationUtils.loadAnimation(this,R.anim.fadein);
+            Button tempButton = buttons[row][j];
+            tempButton.setAnimation(leftToRightScan);
+        }
+
+        for(int i = 0; i < NUM_ROW; i++){
+            if(newGame.isMineHere(i, col))
+                mineCounter++;
+
+            upToDownScan = AnimationUtils.loadAnimation(this,R.anim.fadein);
+            Button tempButton = buttons[i][col];
+            tempButton.setAnimation(upToDownScan);
+        }
+
+        subButton.setText("" + mineCounter);
+    }
+
     void scanDisplay(int row, int col){
 
         Button subButton = buttons[row][col];
         int mineCounter = 0;
 
         for(int j = 0; j < NUM_COL;j++){
-            if(newGame.isMineHere(row,j) == true)
+            if(newGame.isMineHere(row, j))
                 mineCounter++;
         }
         for(int i = 0; i < NUM_ROW; i++){
-            if(newGame.isMineHere(i,col) == true)
+            if(newGame.isMineHere(i, col))
                 mineCounter++;
         }
 
@@ -155,9 +209,9 @@ public class gamePlay extends AppCompatActivity {
     }
 
     void updateScanDisplay(int row, int col){
-        for(int i = 0; i < scanUpdateCoordinate.size(); i++) {
-            int subRow = scanUpdateCoordinate.get(i).getMineRow();
-            int subCol = scanUpdateCoordinate.get(i).getMineCol();
+        for(int i = 0; i < alreadyScannedCell.size(); i++) {
+            int subRow = alreadyScannedCell.get(i).getMineRow();
+            int subCol = alreadyScannedCell.get(i).getMineCol();
 
             if (subRow == row || subCol == col) {
                 scanDisplay(subRow,subCol);
@@ -165,14 +219,9 @@ public class gamePlay extends AppCompatActivity {
         }
     }
 
-    void scanTriggerByRevealedMine(int row, int col){
-        for(int i = 0; i < revealedMineCoordinate.size(); i++) {
-            int subRow = revealedMineCoordinate.get(i).getMineRow();
-            int subCol = revealedMineCoordinate.get(i).getMineCol();
-
-            if (subRow == row || subCol == col) {
-                scanDisplay(subRow,subCol);
-            }
-        }
+    void congratulationDialog(){
+        FragmentManager manager = getSupportFragmentManager();
+        CongratulationDialogFragment dialog = new CongratulationDialogFragment();
+        dialog.show(manager, "Congratulation message!");
     }
 }
