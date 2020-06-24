@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gamemineseeker"
     tools:ignore="LockedOrientationActivity">
+
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -13,11 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Model.gamePlay"
-            android:parentActivityName=".View.MainMenu"
-            android:label="@string/title_activity_game_play"
+            android:name=".View.OptionsScreen"
+            android:label="@string/title_activity_options_screen"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Model.gamePlay"
+            android:label="@string/title_activity_game_play"
+            android:parentActivityName=".View.MainMenu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.MainMenu"
             android:label="@string/title_activity_main_screen"
