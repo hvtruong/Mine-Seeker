@@ -5,6 +5,7 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>8</item>
     </integer-array>
 
     <integer-array name = "num_col">
@@ -18,7 +19,9 @@
     <integer-array name = "num_mine">
         <item>6</item>
         <item>10</item>
+        <item>12</item>
         <item>15</item>
+        <item>18</item>
         <item>20</item>
     </integer-array>
 </resources>

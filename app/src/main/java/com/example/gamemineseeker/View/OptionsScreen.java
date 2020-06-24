@@ -1,5 +1,6 @@
 package com.example.gamemineseeker.View;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.example.gamemineseeker.Model.GamePlayOptions;
@@ -44,6 +45,7 @@ public class OptionsScreen extends AppCompatActivity {
             int rowContent = num_row[i];
 
             RadioButton radioButton = new RadioButton(this);
+            radioButton.setTextColor(Color.WHITE);
             radioButton.setText(getString(R.string.empty) + rowContent);
 
             radioButton.setOnClickListener(view ->{
@@ -57,6 +59,7 @@ public class OptionsScreen extends AppCompatActivity {
             int colContent = num_col[i];
 
             RadioButton radioButton = new RadioButton(this);
+            radioButton.setTextColor(Color.WHITE);
             radioButton.setText(getString(R.string.empty) + colContent);
 
             radioButton.setOnClickListener(view ->{
@@ -70,6 +73,7 @@ public class OptionsScreen extends AppCompatActivity {
             int mineContent = num_mine[i];
 
             RadioButton radioButton = new RadioButton(this);
+            radioButton.setTextColor(Color.WHITE);
             radioButton.setText(getString(R.string.empty) + mineContent);
 
             radioButton.setOnClickListener(view ->{
