@@ -22,11 +22,11 @@ public class MainMenu extends AppCompatActivity {
             startActivity(gamePlayIntent);
         });
 
-        /*Button btn2 = findViewById(R.id.button3);
+        Button btn2 = findViewById(R.id.button3);
         btn2.setOnClickListener(view ->{
-            Intent optionsIntent = new Intent(MainMenu.this, optionsScreen.class);
+            Intent optionsIntent = new Intent(MainMenu.this, OptionsScreen.class);
             startActivity(optionsIntent);
-        });*/
+        });
 
         /*Button btn3 = findViewById(R.id.button4);
         btn3.setOnClickListener(view ->{

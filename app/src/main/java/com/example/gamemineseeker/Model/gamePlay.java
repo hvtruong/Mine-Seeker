@@ -188,6 +188,7 @@ public class gamePlay extends AppCompatActivity {
             tempButton.setAnimation(upToDownScan);
         }
 
+        subButton.setTextColor(Color.WHITE);
         subButton.setText("" + mineCounter);
     }
 
@@ -205,6 +206,7 @@ public class gamePlay extends AppCompatActivity {
                 mineCounter++;
         }
 
+        subButton.setTextColor(Color.WHITE);
         subButton.setText("" + mineCounter);
     }
 
