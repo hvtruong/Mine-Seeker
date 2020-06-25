@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="match_parent"
@@ -36,6 +37,8 @@
         android:id="@+id/button2"
         android:layout_width="150dp"
         android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_games_black_24dp"
+        android:drawableRight="@drawable/ic_games_black_24dp"
         android:text="@string/play_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +63,8 @@
         android:id="@+id/button3"
         android:layout_width="150dp"
         android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_settings_black_24dp"
+        android:drawableRight="@drawable/ic_settings_black_24dp"
         android:text="@string/options"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
@@ -70,6 +75,8 @@
         android:id="@+id/button4"
         android:layout_width="150dp"
         android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_help_black_24dp"
+        android:drawableRight="@drawable/ic_help_black_24dp"
         android:text="@string/help"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"

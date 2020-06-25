@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.example.gamemineseeker.Model.GamePlayOptions;
@@ -98,6 +99,9 @@ public class gamePlay extends AppCompatActivity {
 
                 button.setOnClickListener(view -> {
                     if (newGame.isMineHere(finalRow, finalCol)) {
+                        final MediaPlayer foundSound = MediaPlayer.create(this, R.raw.correct_answer);
+                        foundSound.start();
+
                         displayMine(finalRow,finalCol);
 
                         revealedMineCoordinate.add(new MineCoordinate(finalRow, finalCol));
@@ -113,6 +117,9 @@ public class gamePlay extends AppCompatActivity {
                             congratulationDialog();
                         }
                     } else {
+                        final MediaPlayer scanSound = MediaPlayer.create(this, R.raw.scan_sound);
+                        scanSound.start();
+
                         boolean isThisCellTapped = false;
                         for(int k = 0; k < alreadyScannedCell.size(); k++) {
                             if(alreadyScannedCell.get(k).getMineRow() == finalRow && alreadyScannedCell.get(k).getMineCol() == finalCol){
