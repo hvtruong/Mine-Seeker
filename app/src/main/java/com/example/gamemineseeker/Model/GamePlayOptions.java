@@ -7,11 +7,21 @@ public class GamePlayOptions {
     private int numRow, numCol, numMine;
     private static GamePlayOptions instance;
     private ArrayList<MineCoordinate> hiddenMinesManager = new ArrayList<>();
+    private int totalGame;
+
+    public void setTotalGame(int totalGame) {
+        this.totalGame = totalGame;
+    }
+
+    public int getTotalGame() {
+        return totalGame;
+    }
 
     public GamePlayOptions(){
         numRow = 4;
         numCol = 7;
         numMine = 8;
+        totalGame = 0;
         populateHiddenMines();
     }
 

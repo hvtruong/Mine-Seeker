@@ -3,6 +3,7 @@ package com.example.gamemineseeker.Model;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +38,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class gamePlay extends AppCompatActivity {
+    public static final String SHARED_PREF = "sharedPrefs";
+    public static final String numRow = "numRow";
+    public static final String numCol = "numCol";
+    public static final String numMine = "numMine";
+    public static final String numGamePlayed = "numGamePlayed";
 
     GamePlayOptions newGame = GamePlayOptions.getInstance();
 
@@ -58,6 +64,11 @@ public class gamePlay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_play);
+
+        TextView textView15 = findViewById(R.id.textView15);
+        newGame.setTotalGame(newGame.getTotalGame() + 1);
+        textView15.setText(getString(R.string.total_game_play) + newGame.getTotalGame());
+        saveData();
 
         textView6 = findViewById(R.id.textView6);
         textView7 = findViewById(R.id.textView7);
@@ -232,5 +243,17 @@ public class gamePlay extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         CongratulationDialogFragment dialog = new CongratulationDialogFragment();
         dialog.show(manager, "Congratulation message!");
+    }
+
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(numRow, newGame.getNumRow());
+        editor.putInt(numCol, newGame.getNumCol());
+        editor.putInt(numMine, newGame.getNumMine());
+        editor.putInt(numGamePlayed, newGame.getTotalGame());
+
+        editor.apply();
     }
 }

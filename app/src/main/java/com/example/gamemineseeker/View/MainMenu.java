@@ -17,6 +17,7 @@ public class MainMenu extends AppCompatActivity {
     public static final String numRow = "numRow";
     public static final String numCol = "numCol";
     public static final String numMine = "numMine";
+    public static final String numGamePlayed = "numGamePlayed";
 
     private int numberOfRowSaved, numberOfColSaved, numberOfMineSaved;
 
@@ -53,9 +54,11 @@ public class MainMenu extends AppCompatActivity {
         numberOfRowSaved = sharedPreferences.getInt(numRow, 4);
         numberOfColSaved = sharedPreferences.getInt(numCol, 7);
         numberOfMineSaved = sharedPreferences.getInt(numMine, 8);
+        int numberOfGamePlayed = sharedPreferences.getInt(numGamePlayed,0);
 
         newGame.setNumRow(numberOfRowSaved);
         newGame.setNumCol(numberOfColSaved);
         newGame.setNumMine(numberOfMineSaved);
+        newGame.setTotalGame(numberOfGamePlayed);
     }
 }

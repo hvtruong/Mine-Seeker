@@ -48,18 +48,28 @@
 
     <TableLayout
         android:id="@+id/tableForGamePlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="808dp"
+        android:layout_height="347dp"
+        android:layout_above="@+id/textView15"
         android:layout_below="@+id/textView6"
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="1dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="5dp"
         android:stretchColumns="*"
         app:layout_constraintTop_toBottomOf="@+id/textView7">
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>

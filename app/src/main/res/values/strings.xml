@@ -39,4 +39,7 @@
     <string name="link_to_all_images_used_in_this_application_https_ya_webdesign_com_explore_mining_vector_drawing">Link to all images used in this application:https://ya-webdesign.com/explore/mining-vector-drawing/</string>
     <string name="found">Found \</string>
     <string name="of">\ of \</string>
+    <string name="total_game_play">\Total games played: \</string>
+    <string name="link_to_music_used_http_www_orangefreesounds_com_scan_sound_nhttp_www_orangefreesounds_com_correct_answer_sound_effect">Link to music used: http://www.orangefreesounds.com/scan-sound/\nhttp://www.orangefreesounds.com/correct-answer-sound-effect/</string>
+    <string name="back">Back</string>
 </resources>

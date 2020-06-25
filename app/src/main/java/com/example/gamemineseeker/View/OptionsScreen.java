@@ -23,6 +23,7 @@ public class OptionsScreen extends AppCompatActivity {
     public static final String numRow = "numRow";
     public static final String numCol = "numCol";
     public static final String numMine = "numMine";
+    public static final String numGamePlayed = "numGamePlayed";
 
     GamePlayOptions newGame = GamePlayOptions.getInstance();
     @Override
@@ -32,10 +33,16 @@ public class OptionsScreen extends AppCompatActivity {
 
         createRadioButtons();
 
-        Button btn = findViewById(R.id.button5);
-        btn.setOnClickListener(view ->{
+        Button saveData = findViewById(R.id.button5);
+        saveData.setOnClickListener(view ->{
             saveData();
             finish();
+        });
+
+        Button eraseTimesPlayed = findViewById(R.id.button7);
+        eraseTimesPlayed.setOnClickListener(view ->{
+            newGame.setTotalGame(0);
+            saveData();
         });
     }
 
@@ -97,6 +104,7 @@ public class OptionsScreen extends AppCompatActivity {
         editor.putInt(numRow, newGame.getNumRow());
         editor.putInt(numCol, newGame.getNumCol());
         editor.putInt(numMine, newGame.getNumMine());
+        editor.putInt(numGamePlayed, newGame.getTotalGame());
 
         editor.apply();
     }
