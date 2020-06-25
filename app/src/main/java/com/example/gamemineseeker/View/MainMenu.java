@@ -28,11 +28,11 @@ public class MainMenu extends AppCompatActivity {
             startActivity(optionsIntent);
         });
 
-        /*Button btn3 = findViewById(R.id.button4);
+        Button btn3 = findViewById(R.id.button4);
         btn3.setOnClickListener(view ->{
-            Intent helpIntent = new Intent(MainMenu.this, helpScreen.class);
+            Intent helpIntent = new Intent(MainMenu.this, HelpScreen.class);
             startActivity(helpIntent);
-        });*/
+        });
     }
 
 }
