@@ -61,7 +61,7 @@ public class gamePlay extends AppCompatActivity {
         textView6 = findViewById(R.id.textView6);
         textView7 = findViewById(R.id.textView7);
 
-        textView6.setText(getString(R.string.Found_Mine) + newGame.getNumMine() + getString(R.string.mines));
+        textView6.setText(getString(R.string.found) + numFoundMine + getString(R.string.of) + newGame.getNumMine() + getString(R.string.mines));
         textView7.setText(R.string.scan_used);
 
         newGame.populateHiddenMines();
@@ -107,7 +107,7 @@ public class gamePlay extends AppCompatActivity {
                         mineFoundVibrator.vibrate(150);
 
                         numFoundMine++;
-                        textView6.setText("Found " + numFoundMine + " of " + newGame.getNumMine() + " mines.");
+                        textView6.setText(getString(R.string.found) + numFoundMine + getString(R.string.of) + newGame.getNumMine() + getString(R.string.mines));
 
                         if(newGame.getNumMine() == revealedMineCoordinate.size()){
                             congratulationDialog();
@@ -189,7 +189,7 @@ public class gamePlay extends AppCompatActivity {
         }
 
         subButton.setTextColor(Color.WHITE);
-        subButton.setText("" + mineCounter);
+        subButton.setText(getString(R.string.empty) + mineCounter);
     }
 
     void scanDisplay(int row, int col){
