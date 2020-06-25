@@ -17,12 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/background" />
 
     <RadioGroup
         android:id="@+id/radio_group_row"
         android:layout_width="183dp"
         android:layout_height="117dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -53,7 +54,7 @@
         android:id="@+id/radio_group_col"
         android:layout_width="183dp"
         android:layout_height="117dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/radio_group_row"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -62,7 +63,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
+        android:layout_marginStart="96dp"
         android:text="@string/number_of_columns"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -89,7 +90,7 @@
         android:layout_width="183dp"
         android:layout_height="117dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
