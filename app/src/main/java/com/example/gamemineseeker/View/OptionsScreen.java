@@ -1,5 +1,6 @@
 package com.example.gamemineseeker.View;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -18,6 +19,10 @@ import android.widget.RadioGroup;
 import com.example.gamemineseeker.R;
 
 public class OptionsScreen extends AppCompatActivity {
+    public static final String SHARED_PREF = "sharedPrefs";
+    public static final String numRow = "numRow";
+    public static final String numCol = "numCol";
+    public static final String numMine = "numMine";
 
     GamePlayOptions newGame = GamePlayOptions.getInstance();
     @Override
@@ -29,6 +34,7 @@ public class OptionsScreen extends AppCompatActivity {
 
         Button btn = findViewById(R.id.button5);
         btn.setOnClickListener(view ->{
+            saveData();
             finish();
         });
     }
@@ -82,5 +88,16 @@ public class OptionsScreen extends AppCompatActivity {
 
             radioMineGroup.addView(radioButton);
         }
+    }
+
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(numRow, newGame.getNumRow());
+        editor.putInt(numCol, newGame.getNumCol());
+        editor.putInt(numMine, newGame.getNumMine());
+
+        editor.apply();
     }
 }
